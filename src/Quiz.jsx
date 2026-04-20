@@ -11,14 +11,14 @@ function Quiz(){
     const [extraname, setExtraname]=useState("")
 
      useEffect(()=>{
-            axios.get("http://localhost:4000/questions")
+            axios.get("https://quiz-app-backend-hn6t.onrender.com/questions")
             .then((res)=>setQuestions(res.data))
             .catch((e)=>console.log(e))
         },[])
 
     async function saveScore(){
-        await axios.post(`http://localhost:4000/scores`, {username, score, total:questions.length})
-        const res=await axios.get( `http://localhost:4000/scores/${username}`)
+        await axios.post(`https://quiz-app-backend-hn6t.onrender.com/scores`, {username, score, total:questions.length})
+        const res=await axios.get( `https://quiz-app-backend-hn6t.onrender.com/scores/${username}`)
         setHistory(res.data)
     }
 

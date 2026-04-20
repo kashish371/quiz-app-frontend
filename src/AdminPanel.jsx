@@ -7,7 +7,7 @@ function AdminPanel(){
     const [editingId, setEditingId]=useState(null)
 
     async function fetchQuestions(){
-       const res= await axios.get("http://localhost:4000/questions")
+       const res= await axios.get("https://quiz-app-backend-hn6t.onrender.com/questions")
        setQuestions(res.data)
 
     }
@@ -24,10 +24,10 @@ function AdminPanel(){
 
     async function handleSave(){
         if(editingId){
-            await axios.put(`http://localhost:4000/questions/${editingId}`, form)
+            await axios.put(`https://quiz-app-backend-hn6t.onrender.com/questions/${editingId}`, form)
         }
         else{
-            await axios.post("http://localhost:4000/questions", form)
+            await axios.post("https://quiz-app-backend-hn6t.onrender.com/questions", form)
         }
         fetchQuestions()
         setForm({question:"", options:["", "", "", ""], answer:0})
@@ -35,7 +35,7 @@ function AdminPanel(){
     }
 
     async function deleteQuestion(id){
-        await axios.delete(`http://localhost:4000/questions/${id}`)
+        await axios.delete(`https://quiz-app-backend-hn6t.onrender.com/questions/${id}`)
         fetchQuestions()
     }
 
